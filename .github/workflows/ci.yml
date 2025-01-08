@@ -6,7 +6,8 @@ name: Go Build and Release
 on:
   push:
     tags:
-      -v 'v[0-9]+.[0-9]+.[0-9]+' # Trigger on version tags (eg v1.2.0).
+      branches: [ main ]
+      #      -v 'v[0-9]+.[0-9]+.[0-9]+' # Trigger on version tags (eg v1.2.0).
 
 jobs:
   build:
