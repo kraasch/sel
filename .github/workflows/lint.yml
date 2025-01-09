@@ -2,8 +2,7 @@ name: Lint Go code
 
 on:
   push:
-    branches:
-      - master
+    branches: [master, main]
 
 jobs:
   lint:

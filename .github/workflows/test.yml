@@ -2,8 +2,7 @@ name: Run Go Test
 
 on:
   push:
-    branches:
-      - master
+    branches: [master, main]
 
 jobs:
   test:
