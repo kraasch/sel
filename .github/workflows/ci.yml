@@ -9,6 +9,9 @@ on:
     tags:
       -v 'v[0-9]+.[0-9]+.[0-9]+' # Trigger on version tags (eg v1.2.0).
 
+permissions:
+  contents: write # Allow pushing tags and creating releases.
+
 jobs:
   build:
     runs-on: ubuntu-latest
