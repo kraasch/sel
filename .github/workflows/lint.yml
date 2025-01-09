@@ -1,25 +1,33 @@
-name: Lint Go code
+name: Run golangci-lint
 
 on:
   push:
-    branches: [master, main]
+    branches:
+      - main
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+  # Optional: allow read access to pull request. Use with `only-new-issues` option.
+  # pull-requests: read
 
 jobs:
-  lint:
-    runs-on: ubuntu-18.04
+  golangci:
+    strategy:
+      matrix:
+        go: [stable]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    name: lint
+    runs-on: ${{ matrix.os }}
     steps:
-
-      - name: Checkout code
+      - name: Checkout.
         uses: actions/checkout@v4
-
-      - name: Setup Go environment
-        uses: actions/setup-go@v4
+      - name: Setup.
+        uses: actions/setup-go@v5
         with:
-          stable: 'false'
-          go-version: '1.20.1'
-
-      - name: Linting
-        run: |
-          curl -sSfL 'https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh' | sh -s -- -b $(go env GOPATH)/bin v1.26.0
-          golangci-lint run
-
+          go-version: ${{ matrix.go }}
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.60
