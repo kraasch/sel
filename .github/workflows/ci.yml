@@ -20,9 +20,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Debug
-      run: echo "Push it real good (${GITHUB_REF})!"
-
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
