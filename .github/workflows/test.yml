@@ -1,3 +1,5 @@
+name: Run Go Test
+
 on:
   push:
     branches:
