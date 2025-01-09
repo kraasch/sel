@@ -1,3 +1,5 @@
+# https://github.com/golangci/golangci-lint-action
+
 name: Run golangci-lint
 
 on:
