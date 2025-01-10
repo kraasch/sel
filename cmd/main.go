@@ -70,6 +70,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
       case "y", ".": // Select under cursor.
       m.selected[m.cursor] = struct{}{}
       incr()
+      case "h", "?": // Toggle help.
+      isVerbose = !isVerbose
       case "enter", " ": // Toggle selection.
       _, ok := m.selected[m.cursor]
       if ok {
@@ -99,7 +101,7 @@ func (m model) View() string {
     s += fmt.Sprintf("%s [%s] %s\n", cursor, checked, choice)
   }
   if isVerbose {
-    s += "\nFinish (q), abort (ctrl-c).\n"
+    s += "\nFinish (q), abort (ctrl-c), toggle help (h, ?).\n"
   }
   return s
 }
