@@ -1,4 +1,4 @@
-module sel
+module github.com/kraasch/sel
 
 go 1.18
 
